@@ -12,6 +12,15 @@ This folder contains a **single reproducible pipeline** that fixes the main issu
 
 `extras/sovereign_default_dataset_1980_2022.csv - sovereign_default_dataset_1980_2022.csv`
 
+Optional enriched panel (World Bank overlay): `data_out/panel_final.csv`. When present, `load_dataset()` merges panel values onto the sovereign CSV by country and year.
+
+Refresh the panel from World Bank:
+
+```bash
+pip install -r requirements-dev.txt
+python scripts/build_panel.py
+```
+
 ## Run
 
 ```bash
@@ -36,7 +45,8 @@ python run_evaluation.py
 
 ## Source layout
 
-- `src/config.py` — paths and hyperparameters
+- `src/panel_data.py` — optional panel_final merge and World Bank column normalization
+- `scripts/build_panel.py` — build `data_out/panel_final.csv` from wbgapi
 - `src/data.py` — loading and split helpers
 - `src/metrics.py` — F1 / PR-AUC / threshold tuning
 - `src/models.py` — Probit, Logistic, XGBoost, Hybrid (LSTM + XGBoost)
@@ -49,6 +59,14 @@ python run_evaluation.py
 ## Alignment audit
 
 See [THESIS_ALIGNMENT_AUDIT.md](THESIS_ALIGNMENT_AUDIT.md) for thesis ↔ code mapping and corrected Chapter 4/5 narrative.
+
+## Tests and CI
+
+```bash
+python -m pytest tests/ -q
+```
+
+GitHub Actions runs on push/PR to `main` (`.github/workflows/ci.yml`).
 
 ## Patch thesis document
 

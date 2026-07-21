@@ -2,6 +2,10 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = PROJECT_ROOT / "extras" / "sovereign_default_dataset_1980_2022.csv - sovereign_default_dataset_1980_2022.csv"
+DATA_OUT_DIR = PROJECT_ROOT / "data_out"
+PANEL_FINAL_PATH = DATA_OUT_DIR / "panel_final.csv"
+PANEL_FINAL_CANDIDATES = [PANEL_FINAL_PATH]
+MODELS_DIR = PROJECT_ROOT / "models"
 RESULTS_DIR = PROJECT_ROOT / "results"
 
 RANDOM_STATE = 42

@@ -5,12 +5,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from .config import DATA_PATH, RANDOM_STATE, SEQUENCE_LENGTH, TEST_COUNTRY_FRACTION
+from .panel_data import load_merged_dataset
 
 
 def load_dataset(path=DATA_PATH) -> pd.DataFrame:
+    if path == DATA_PATH:
+        return load_merged_dataset()
     df = pd.read_csv(path)
-    df = df.sort_values(["Country", "Year"]).reset_index(drop=True)
-    return df
+    return df.sort_values(["Country", "Year"]).reset_index(drop=True)
 
 
 def split_countries(df: pd.DataFrame, test_size: float = TEST_COUNTRY_FRACTION):
