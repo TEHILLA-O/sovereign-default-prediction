@@ -1,0 +1,5 @@
+model,threshold,f1_default,recall_default,precision_default,pr_auc,roc_auc,accuracy,test_defaults,test_observations,pseudo_r2,llr_pvalue
+Hybrid (Attention-LSTM + XGBoost),0.4,0.122,0.1562,0.1,0.0807,0.5087,0.8647,32,532,,
+Probit,0.05,0.1207,0.6571,0.0665,0.0726,0.5633,0.4435,35,602,0.0086,0.7254
+Logistic Regression,0.28,0.1099,1.0,0.0581,0.072,0.5593,0.0581,35,602,,
+XGBoost,0.05,0.0995,0.5714,0.0545,0.0592,0.4942,0.3987,35,602,,
