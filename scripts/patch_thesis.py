@@ -17,6 +17,7 @@ from src.config import RESULTS_DIR
 from src.data import load_dataset
 from src.thesis_results import build_table_4_1
 from src.thesis_text import (
+    apply_global_content_fixes,
     build_paragraph_updates,
     build_table_4_1_rows,
     build_table_4_2_rows,
@@ -95,14 +96,26 @@ def patch_thesis_document(
         if idx >= 690:
             continue
         text = para.text.strip()
-        if text and ("-" in text or "–" in text or "—" in text):
+        if not text:
+            continue
+        updated = apply_global_content_fixes(text, default_rate)
+        if updated != text:
+            set_paragraph_text(para, updated)
+            text = updated
+        if "-" in text or "–" in text or "—" in text:
             set_paragraph_text(para, dehyphenate_text(text))
 
     for table in doc.tables:
         for row in table.rows:
             for cell in row.cells:
                 text = cell.text.strip()
-                if text and ("-" in text or "–" in text):
+                if not text:
+                    continue
+                updated = apply_global_content_fixes(text, default_rate)
+                if updated != text:
+                    cell.text = updated
+                    text = updated
+                if "-" in text or "–" in text:
                     cell.text = dehyphenate_text(text)
 
     patch_table(doc.tables[5], build_table_4_1_rows(table_4_1))

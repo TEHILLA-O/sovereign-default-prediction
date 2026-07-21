@@ -36,10 +36,15 @@ Generated after thesis aligned hybrid tuning (`src/hybrid_tuning.py`).
 
 ## Remaining limitations (documented honestly)
 
-1. **Hybrid temporal split** fails at default threshold (F1 = 0); country split is the primary evidence base.
+1. **Hybrid temporal split** fails at nested CV threshold (F1 = 0); country split is the primary evidence base.
 2. **Hybrid recall** on country split (15.6%) is far below Probit/logistic despite best F1.
 3. **Probit joint significance** remains weak (pseudo R² ≈ 0.009; LLR p ≈ 0.73).
 4. **ROC AUC** near 0.5 for most models reflects rare, heterogeneous defaults.
+5. **Default rate** in full sample ≈ 5.5% (not 1.4%); thesis text patched to match.
+
+## Thesis text patches (Jul 2026)
+
+`scripts/patch_thesis.py` updates Table 4.2, abstract, hypotheses, methodology (nested CV, panel merge), Section 4.3–4.6, diagnostics (paired t test t = −0.33, p = 0.743), and limitations. Stale claims (ROC 0.68–0.72, 42% recall, 1.4% default rate, Hosmer–Lemeshow 100.71, 59% accuracy CI) removed.
 
 ## Regenerate everything
 
