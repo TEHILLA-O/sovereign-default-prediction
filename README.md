@@ -2,6 +2,8 @@
 
 This folder contains a **single reproducible pipeline** that fixes the main issues in the earlier notebooks:
 
+See [FAILURES.md](./FAILURES.md) for what can go wrong, what broke, how it was fixed, and results.
+
 - **Country hold-out split** (no leakage across the same country)
 - **Temporal split** (train on years ≤ 2010, test on later years)
 - **Threshold tuning** on validation probabilities (maximize default-class F1)
