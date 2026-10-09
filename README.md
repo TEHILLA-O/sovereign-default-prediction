@@ -1,4 +1,4 @@
-# Sovereign Default Prediction — Fixed Evaluation Pipeline
+# Sovereign Default Prediction: Fixed Evaluation Pipeline
 
 This folder contains a **single reproducible pipeline** that fixes the main issues in the earlier notebooks:
 
